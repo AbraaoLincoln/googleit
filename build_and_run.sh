@@ -1,7 +1,15 @@
 #!/bin/bash
 
-gcc `pkg-config --cflags gtk+-3.0` -o ./releases/googleit main.c `pkg-config --libs gtk+-3.0`
+echo "📚 Generating resources..."
 
-echo "running the app..."
+glib-compile-resources googleitapp.gresource.xml --target=resources.c --generate-source
 
-./releases/googleit
+echo "🖥  Compiling the application.."
+
+gcc $(pkg-config --cflags gtk+-3.0) -o ./releases/googleit *.c $(pkg-config --libs gtk+-3.0)
+
+
+if [ $? -eq 0 ]; then
+    echo "🏃 Running the app..."
+    ./releases/googleit
+fi
