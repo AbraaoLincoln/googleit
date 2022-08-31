@@ -37,7 +37,7 @@ static void app_window_init (AppWindow *win){
 static void
 app_window_class_init (AppWindowClass *class){
     gtk_widget_class_set_template_from_resource(GTK_WIDGET_CLASS (class),
-                                               "/googleit/window.ui");
+                                               "/googleit/src/resources/window.ui");
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS (class), AppWindow, searchbar);
     gtk_widget_class_bind_template_callback(GTK_WIDGET_CLASS (class), open_on_broswer);
 }

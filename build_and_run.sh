@@ -2,11 +2,11 @@
 
 echo "📚 Generating resources..."
 
-glib-compile-resources googleitapp.gresource.xml --target=resources.c --generate-source
+glib-compile-resources ./src/resources/googleitapp.gresource.xml --target=./src/c/resources.c --generate-source
 
 echo "🖥  Compiling the application.."
 
-gcc $(pkg-config --cflags gtk+-3.0) -o ./releases/googleit *.c $(pkg-config --libs gtk+-3.0)
+gcc $(pkg-config --cflags gtk+-3.0) -o ./releases/googleit ./src/c/*.c $(pkg-config --libs gtk+-3.0)
 
 
 if [ $? -eq 0 ]; then
